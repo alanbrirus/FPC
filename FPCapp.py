@@ -3,7 +3,6 @@
 
 # In[ ]:
 
-
 import streamlit as st
 import pandas as pd
 import requests
@@ -13,7 +12,14 @@ st.set_page_config(page_title="FPC Analytics", layout="wide")
 st.title("⚽ Dashboard Fútbol Profesional Colombiano")
 
 # --- FUNCIONES PARA OBTENER DATOS ---
-API_KEY = "MY_API_KEY"
+try:
+    API_KEY = st.secrets["api_key"]
+except FileNotFoundError:
+    st.error("No se encontró el archivo de secretos. Configura .streamlit/secrets.toml")
+    st.stop()
+except KeyError:
+    st.error("La clave 'api_key' no está definida en los secretos.")
+    st.stop()
 BASE_URL = "https://v3.football.api-sports.io/" # Ejemplo con API-Football
 
 def get_data(endpoint, params={}):

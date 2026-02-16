@@ -13,7 +13,7 @@ st.set_page_config(page_title="FPC Analytics", layout="wide")
 st.title("⚽ Dashboard Fútbol Profesional Colombiano")
 
 # --- FUNCIONES PARA OBTENER DATOS ---
-API_KEY = "TU_API_KEY_AQUI"
+API_KEY = "MY_API_KEY"
 BASE_URL = "https://v3.football.api-sports.io/" # Ejemplo con API-Football
 
 def get_data(endpoint, params={}):
